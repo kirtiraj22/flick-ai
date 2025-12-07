@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getRootAgent } from "@/agents";
+import { getRootAgent } from "@/agents/root";
 
 let runnerInstance: Awaited<ReturnType<typeof getRootAgent>>["runner"];
 
