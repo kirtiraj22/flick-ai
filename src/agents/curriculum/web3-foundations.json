@@ -1,0 +1,23 @@
+{
+  "topics": [
+    {
+      "id": "wallets",
+      "title": "What is a Web3 Wallet?",
+      "content": "A wallet is a cryptographic key manager. It stores private keys, signs transactions, and proves ownership on blockchains.",
+      "quiz": [
+        {
+          "question": "What does a Web3 wallet store?",
+          "choices": ["Your tokens", "Your private keys", "Your NFTs", "Your browser history"],
+          "answer": 1
+        }
+      ],
+      "quests": [
+        {
+          "id": "wallet-install",
+          "objective": "Install any Web3 wallet extension (Metamask, Phantom, etc.)",
+          "reward_xp": 10
+        }
+      ]
+    }
+  ]
+}
