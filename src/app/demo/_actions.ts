@@ -1,19 +1,17 @@
 "use server";
+import { getRootAgent } from "@/agents/root";
 
-import { getRootAgent } from "@/agents";
-
-let agentRunner: Awaited<ReturnType<typeof getRootAgent>>["runner"];
-
-async function getAgentRunner() {
-	if (!agentRunner) {
+let _runner: any = null;
+async function getRunner() {
+	if (!_runner) {
 		const { runner } = await getRootAgent();
-		agentRunner = runner;
+		_runner = runner;
 	}
-	return agentRunner;
+	return _runner;
 }
 
 export async function askAgent(message: string) {
-	const runner = await getAgentRunner();
-	const result = await runner.ask(message);
-	return result;
+	const runner = await getRunner();
+	const res = await runner.ask(message, { userId: "demo_user" });
+	return typeof res === "string" ? res : JSON.stringify(res);
 }

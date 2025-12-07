@@ -1,0 +1,10 @@
+{
+  "sessions": {
+    "demo_user": {
+      "mode": "tutor",
+      "currentTopic": "wallets",
+      "tutorChunkIndex": 0,
+      "quizSession": null
+    }
+  }
+}
