@@ -1,19 +1,22 @@
 import { NextResponse } from "next/server";
-import { getRootAgent } from "@/agents/root";
-
-let runnerInstance: Awaited<ReturnType<typeof getRootAgent>>["runner"];
-
-async function getRunner() {
-  if (!runnerInstance) {
-    const { runner } = await getRootAgent();
-    runnerInstance = runner;
-  }
-  return runnerInstance;
-}
+import { handleMessage } from "../../../agentsRoot";
 
 export async function POST(req: Request) {
-  const { message } = await req.json();
-  const runner = await getRunner();
-  const result = await runner.ask(message);
-  return NextResponse.json({ result });
+	try {
+		const body = await req.json();
+		const message = body.message || "";
+		const userId = body.userId || "demo_user";
+		if (!message)
+			return NextResponse.json(
+				{ error: "missing message" },
+				{ status: 400 }
+			);
+		const out = await handleMessage({ message, userId });
+		return NextResponse.json(out);
+	} catch (err: any) {
+		return NextResponse.json(
+			{ error: true, text: String(err?.message || err) },
+			{ status: 500 }
+		);
+	}
 }
