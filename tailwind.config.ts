@@ -1,60 +1,63 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
-  darkMode: ["class"],
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      borderColor: {
-        DEFAULT: "hsl(var(--border))",
-      },
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-    },
-  },
-  plugins: [],
-};
+export default {
+	darkMode: ["class"],
+	content: [
+		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+	],
+	theme: {
+		extend: {
+			colors: {
+				paper: "var(--color-paper)",
+				ink: "var(--color-ink)",
+				white: "var(--color-surface)",
 
-export default config;
+				flick: {
+					yellow: "#D4FF00",
+					pink: "#FF90E8",
+					blue: "#59C3FF",
+					green: "#00FFA3",
+					purple: "#B98EFF",
+					orange: "#FF7D33",
+					black: "#121212",
+				},
+			},
+
+			fontFamily: {
+				sans: ['"Plus Jakarta Sans"', "sans-serif"],
+				display: ['"Bricolage Grotesque"', "sans-serif"],
+			},
+
+			boxShadow: {
+				neo: "5px 5px 0px 0px var(--color-ink)",
+				"neo-lg": "10px 10px 0px 0px var(--color-ink)",
+				"neo-sm": "3px 3px 0px 0px var(--color-ink)",
+				"neo-hover": "7px 7px 0px 0px var(--color-ink)",
+			},
+
+			animation: {
+				marquee: "marquee 25s linear infinite",
+				float: "float 4s ease-in-out infinite",
+				"fade-in": "fadeIn 0.3s ease-out forwards",
+			},
+
+			keyframes: {
+				marquee: {
+					"0%": { transform: "translateX(0%)" },
+					"100%": { transform: "translateX(-100%)" },
+				},
+				float: {
+					"0%, 100%": { transform: "translateY(0)" },
+					"50%": { transform: "translateY(-15px)" },
+				},
+				fadeIn: {
+					"0%": { opacity: "0" },
+					"100%": { opacity: "1" },
+				},
+			},
+		},
+	},
+	plugins: [],
+} satisfies Config;
